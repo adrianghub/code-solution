@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import Link from 'next/Link'
+import { codeInspirations } from '../.next/lib/data'
 
 export default function Home() {
   return (
@@ -13,6 +15,19 @@ export default function Home() {
         <h1>100 code inspirations</h1>
       </main>
 
+      <div>
+        {codeInspirations.map(item => (
+          <div key={item.slug}>
+            <div>
+              <Link href={`/blog/${item.slug}`}>
+                <a>{item.title}</a>
+              </Link>
+            </div>
+            <p>{item.date.toString()}</p>
+            <p>{item.content}</p>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
