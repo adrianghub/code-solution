@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/Link'
-import { codeInspirations } from '../.next/lib/data'
+import { codeInspirations } from '../lib/data'
 
 export default function Home() {
   return (

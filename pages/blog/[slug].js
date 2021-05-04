@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { codeInspirations } from '../../.next/lib/data';
+import { codeInspirations } from '../../lib/data';
 
 export default function BlogPage({ title, date, content }) {
   return (
