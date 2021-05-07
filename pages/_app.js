@@ -4,7 +4,7 @@ import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div className="mx-auto my-8 w-9/12">
+    <div className="mx-auto my-8 w-6/12">
       <header>
         <h1 className="text-6xl font-bold text-center">100 code inspirations</h1>
         <nav className="my-4">
@@ -15,8 +15,8 @@ function MyApp({ Component, pageProps }) {
               </Link>
             </li>
             <li>
-              <Link href="/about">
-                <a>about</a>
+              <Link href="/contact">
+                <a>contact</a>
               </Link>
             </li>
           </ul>

@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/Link'
+import { format, parseISO } from 'date-fns';
 import { codeInspirations } from '../lib/data'
 
 export default function Home() {
@@ -11,23 +12,27 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1>100 code inspirations</h1>
-      </main>
-
-      <div>
+      <div className="space-y-4">
         {codeInspirations.map(item => (
-          <div key={item.slug}>
-            <div>
-              <Link href={`/blog/${item.slug}`}>
-                <a>{item.title}</a>
-              </Link>
-            </div>
-            <p>{item.date.toString()}</p>
-            <p>{item.content}</p>
-          </div>
+          <CodeInspirationItem key={item.slug} {...item} />
         ))}
       </div>
+    </div>
+  )
+}
+
+function CodeInspirationItem({ slug, title, date, content }) {
+  return (
+    <div className="border border-gray-100 shadow hover:shadow-md hover:border-gray-200 rounded-md p-4 transition duration-200 ease-in" key={slug}>
+      <div>
+        <Link href={`/blog/${slug}`}>
+          <a className="font-bold">{title}</a>
+        </Link>
+      </div>
+      <div className="text-grey-600 text-xs">
+        <p>{format(parseISO(date), 'do MMMM, uuu')}</p>
+      </div>
+      <p>{content.substr(0, 180)}</p>
     </div>
   )
 }
