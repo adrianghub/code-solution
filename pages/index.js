@@ -1,9 +1,9 @@
-import Head from 'next/head'
-import Link from 'next/Link'
-import { format, parseISO } from 'date-fns';
-import { codeInspirations } from '../lib/data'
+import Head from "next/head";
+import Link from "next/Link";
+import { format, parseISO } from "date-fns";
+import { getAllSnippets } from '../lib/data'
 
-export default function Home() {
+export default function Home({ snippets }) {
   return (
     <div>
       <Head>
@@ -13,26 +13,44 @@ export default function Home() {
       </Head>
 
       <div className="space-y-4">
-        {codeInspirations.map(item => (
+        {snippets.map(item => (
           <CodeInspirationItem key={item.slug} {...item} />
         ))}
       </div>
     </div>
-  )
+  );
+}
+
+export async function getStaticProps() {
+  const allSnippets = getAllSnippets();
+
+  return {
+    props: {
+      snippets: allSnippets.map(({ data, content, slug }) => ({
+        ...data,
+        date: data.date.toISOString(),
+        content,
+        slug
+      })),
+    },
+  };
 }
 
 function CodeInspirationItem({ slug, title, date, content }) {
   return (
-    <div className="border border-gray-100 shadow hover:shadow-md hover:border-gray-200 rounded-md p-4 transition duration-200 ease-in" key={slug}>
+    <div
+      className="border border-gray-100 shadow hover:shadow-md hover:border-gray-200 rounded-md p-4 transition duration-200 ease-in"
+      key={slug}
+    >
       <div>
         <Link href={`/blog/${slug}`}>
           <a className="font-bold">{title}</a>
         </Link>
       </div>
       <div className="text-grey-600 text-xs">
-        <p>{format(parseISO(date), 'do MMMM, uuu')}</p>
+        <p>{format(parseISO(date), "do MMMM, uuu")}</p>
       </div>
-      <p>{content.substr(0, 180)}</p>
+      <p>{content.substr(0, 20) + "..."}</p>
     </div>
-  )
+  );
 }

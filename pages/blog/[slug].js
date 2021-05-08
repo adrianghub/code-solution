@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { codeInspirations } from '../../lib/data';
+import { getAllSnippets } from '../../lib/data';
 import { format, parseISO } from 'date-fns';
 
 export default function BlogPage({ title, date, content }) {
@@ -26,18 +26,25 @@ export default function BlogPage({ title, date, content }) {
 }
 
 export async function getStaticProps(context) {
-  console.log("hue", context);
   const { params } = context;
+  const allSnippets = getAllSnippets();
+  const { data, content } = allSnippets.find((item) => item.slug === params.slug) // will be passed to the page component as props
+
   return {
-    props: codeInspirations.find(item => item.slug === params.slug), // will be passed to the page component as props
+    props:  {
+      ...data,
+      date: data.date.toISOString(),
+      content, 
+    }
   }
 }
 
 export async function getStaticPaths() {
+
   return {
-    paths: codeInspirations.map((item) => ({
+    paths: getAllSnippets().map((post) => ({
       params: {
-        slug: item.slug,
+        slug: post.slug,
       },
     })),
     fallback: false, // See the "fallback" section below
