@@ -1,8 +1,21 @@
-import Head from 'next/head'
-import { getAllSnippets } from '../../lib/data';
-import { format, parseISO } from 'date-fns';
+import Head from "next/head";
+import React, { useEffect } from 'react'; 
+import { getAllSnippets } from "../../lib/data";
+import { format, parseISO } from "date-fns";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
+const prism = require("prismjs")
+require('prismjs/components/prism-python');
+
 
 export default function BlogPage({ title, date, content }) {
+  
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      prism.highlightAll();
+    }
+  }, []);
+
   return (
     <div>
       <Head>
@@ -12,35 +25,38 @@ export default function BlogPage({ title, date, content }) {
       </Head>
 
       <main>
-      <div className="border-b-2 border-gray-200 mb-4">
+        <div className="border-b-2 border-gray-200 mb-4">
           <h2 className="text-3xl font-bold">{title}</h2>
           <div className="text-gray-600 text-md">
-            {format(parseISO(date), 'do MMMM, uuu')}
+            {format(parseISO(date), "do MMMM, uuu")}
           </div>
         </div>
-        <div className="prose">{content}</div>
+        <div className="prose">
+          <MDXRemote {...content} />
+        </div>
       </main>
-
     </div>
-  )
+  );
 }
 
 export async function getStaticProps(context) {
   const { params } = context;
   const allSnippets = getAllSnippets();
-  const { data, content } = allSnippets.find((item) => item.slug === params.slug) // will be passed to the page component as props
+  const { data, content } = allSnippets.find(
+    (item) => item.slug === params.slug
+  ); // will be passed to the page component as props
+  const mdxSource = await serialize(content);
 
   return {
-    props:  {
+    props: {
       ...data,
       date: data.date.toISOString(),
-      content, 
-    }
-  }
+      content: mdxSource,
+    },
+  };
 }
 
 export async function getStaticPaths() {
-
   return {
     paths: getAllSnippets().map((post) => ({
       params: {

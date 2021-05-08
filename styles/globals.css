@@ -7,3 +7,45 @@
     @apply text-purple-500 hover:text-purple-900
   }
 }
+
+pre[class*="language-javascript"],
+code[class*="language-javascript"] {
+	color: #4ec9b0;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #6a9955;
+}
+
+.token.punctuation {
+	color: #d4d4d4;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #b5cea8;
+}
+
+.blog-post pre{
+  background-color: #eff0f1;
+  padding: 16px;
+  border-radius: 4px;
+  overflow: auto;
+  font-size: 14px;
+  margin-bottom: 4.1rem;
+  padding: 3.7rem 0 1.6rem .4rem;
+  border-radius: 12px;
+  overflow: hidden;
+  /* background-image: url(your_url_to_image.png); */
+  background-repeat: no-repeat;
+  background-size: 44px 10px;
+  background-position: 16px 14px;
+}

@@ -28,6 +28,7 @@ export async function getStaticProps() {
     props: {
       snippets: allSnippets.map(({ data, content, slug }) => ({
         ...data,
+        description: data.description,
         date: data.date.toISOString(),
         content,
         slug
@@ -36,7 +37,7 @@ export async function getStaticProps() {
   };
 }
 
-function CodeInspirationItem({ slug, title, date, content }) {
+function CodeInspirationItem({ slug, title, date, description }) {
   return (
     <div
       className="border border-gray-100 shadow hover:shadow-md hover:border-gray-200 rounded-md p-4 transition duration-200 ease-in"
@@ -50,7 +51,7 @@ function CodeInspirationItem({ slug, title, date, content }) {
       <div className="text-grey-600 text-xs">
         <p>{format(parseISO(date), "do MMMM, uuu")}</p>
       </div>
-      <p>{content.substr(0, 20) + "..."}</p>
+      <p>{description}</p>
     </div>
   );
 }
