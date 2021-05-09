@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Link from "next/Link";
+import Link from "next/link";
 import { format, parseISO } from "date-fns";
 import { getAllSnippets } from '../lib/data'
 
