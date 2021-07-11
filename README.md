@@ -25,9 +25,8 @@ Share your thoughts ✨ I would appreciate your unique feedback 🙌 *__zinko.ad
 ## :gem: Technologies :gem:
 
 - HTML5
-- CSS3 / Material UI
-- JS / React
-- Redux
+- CSS3 / Tailwind
+- JS / Next.js
 
 ## Author :octocat:
 
