@@ -12,8 +12,6 @@ Next, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 To run locally on localhost:3000 (by default)
