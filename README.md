@@ -19,3 +19,16 @@ To run locally on localhost:3000 (by default)
 ```bash
 npm run start
 ```
+
+Share your thoughts ✨ I would appreciate your unique feedback 🙌 *__zinko.adrian00@gmail.com__*
+
+## :gem: Technologies :gem:
+
+- HTML5
+- CSS3 / Material UI
+- JS / React
+- Redux
+
+## Author :octocat:
+
+* **_Adrian Zinko_** - [AdrianGHub](https://github.com/adrianghub/dev-portfolio) :link:
