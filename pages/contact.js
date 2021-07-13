@@ -1,5 +1,12 @@
 import Head from 'next/head'
 
+import {
+  FaGithub,
+  FaFacebook,
+  FaTwitterSquare,
+  FaLinkedin,
+} from "react-icons/fa"
+
 export default function Contact() {
   return (
     <div>
@@ -9,8 +16,34 @@ export default function Contact() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1>Contact</h1>
+      <main class="min-h-full">
+        <ul class="h-50v flex flex-column justify-around items-center">
+          <li class="text-5xl">
+            <a
+              href="https://www.facebook.com/adrian.zinko.9"
+            >
+              {<FaFacebook />}
+            </a>
+          </li>
+          <li class="text-5xl">
+            <a href="https://twitter.com/adrian_zinko">
+              {<FaTwitterSquare />}
+            </a>
+          </li>
+          <li class="text-5xl">
+            <a href="https://github.com/AdrianGHub">
+              {<FaGithub />}
+            </a>
+          </li>
+          <li class="text-5xl">
+            <a
+              className
+              href="https://www.linkedin.com/in/adrian-zinko-b7947b166/"
+            >
+              <FaLinkedin />
+            </a>
+          </li>
+        </ul>
       </main>
 
     </div>
