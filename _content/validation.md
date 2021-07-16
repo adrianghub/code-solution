@@ -6,9 +6,9 @@ description: Implement function, which checks if the password meets certain cond
 
 Implement function, which checks if the password meets certain conditions:
 
-a) Length between 3 and 10 chars
-b) 1 special character - !, @ or #
-c) At least 1 digit
+- Length between 3 and 10 chars
+- 1 special character - !, @ or #
+- At least 1 digit
 
 Example:
 
